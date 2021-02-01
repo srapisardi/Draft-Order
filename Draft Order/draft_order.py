@@ -1,5 +1,4 @@
 # This is a program that creates a random order for your fantasy sports league.
-# Enter the manager names in the TEAMS tuple.
 
 import random, time
 
