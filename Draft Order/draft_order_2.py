@@ -1,8 +1,9 @@
 from tkinter import *
-import random, time
+import random
 
 class Application(Frame):
     def __init__(self,master):
+        """ Builds the initial Application and sets the attributes of the program"""
         super(Application, self).__init__(master)
         self.grid()
         self.teams = []
@@ -36,7 +37,7 @@ class Application(Frame):
         self.order = Text(self, height=10, width=30, wrap=WORD)
         self.order.grid(row=3, column=0, columnspan=3)
 
-
+    # Adds teams to the list
     def add_team(self):
         team = self.team_name.get()
         if team:
@@ -45,7 +46,7 @@ class Application(Frame):
             self.team_name.delete(0, END)
             Label(self,
                   text = str(self.league_size)).grid(row=0, column=0, sticky=S)
-
+    # Generates the draft order
     def draft_order(self):
         while self.league_size != 0:
             random_team = random.choice(self.teams)
@@ -55,7 +56,7 @@ class Application(Frame):
             self.teams.remove(random_team)
             self.league_size -= 1
 
-
+    # Clears the teams out of the list
     def clear_button(self):
         self.teams.clear()
         self.order.delete(0.0, END)
